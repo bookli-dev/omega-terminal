@@ -6,7 +6,7 @@ let events=[],selected='',baseId='',demo=false,pending=null,busy=false,loginAtte
 const message=s=>$('status').textContent=s;
 const storage={get(k){try{return localStorage.getItem(k)}catch{return null}},set(k,v){try{localStorage.setItem(k,v)}catch{message('Pamięć lokalna niedostępna. Zachowaj własną kopię szkicu.')}},remove(k){try{localStorage.removeItem(k)}catch{}}};
 for(const s of STATUSES)for(const id of ['state','filter']){const o=document.createElement('option');o.value=o.textContent=s;$(id).append(o)}
-$('client').value=storage.get('omega2-client')||'';
+$('client').value=storage.get('omega2-client')||'535061177445-g5ik1j58ftkrh52qjm1e0utgiq08khmf.apps.googleusercontent.com';
 function draft(){return {taskId:selected,baseId,title:$('title').value,text:$('text').value,status:$('state').value,report:$('report').value}}
 function persist(){if(!demo)storage.set('omega2-draft',JSON.stringify({...draft(),pending}))}
 function fill(t={}){selected=t.taskId||'';baseId=t.baseId||t.id||'';for(const k of ['title','text','report'])$(k).value=t[k]||'';$('state').value=t.status||'nowe';$('heading').textContent=selected?'Uzupełnij zadanie':'Nowe zadanie';pending=t.pending||null}

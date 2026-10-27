@@ -1,4 +1,4 @@
-const CACHE='omega2-shell-v2.0.4',FILES=['./','./index.html','./app.js','./drive.js','./model.js','./session.js','./style.css','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
+const CACHE='omega2-shell-v2.1.0',FILES=['./','./index.html','./app.js','./drive.js','./model.js','./session.js','./style.css','./fonts.css','./font-1.ttf','./font-3.ttf','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',e=>e.waitUntil((async()=>{
  const cache=await caches.open(CACHE);
  try{

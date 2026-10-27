@@ -1,7 +1,7 @@
 import {validate} from './model.js';
 export const FOLDER='1vkqpV25vKM5imrokUGZXiixVZspxMitc';
 export class Drive {
- constructor(token,fetcher=fetch){this.token=token;this.fetcher=fetcher}
+ constructor(token,fetcher=(...args)=>globalThis.fetch(...args)){this.token=token;this.fetcher=fetcher}
  async api(path,options={}){
   let r;try{r=await this.fetcher('https://www.googleapis.com/'+path,{...options,headers:{...options.headers,Authorization:'Bearer '+this.token}})}catch{throw Error('Brak połączenia lub niepewny wynik zapisu. Szkic i identyfikator ponowienia zachowano.')}
   if(!r.ok){const e=Error(r.status===401?'Sesja wygasła. Połącz ponownie.':`Błąd Drive ${r.status}. Szkic i identyfikator ponowienia zachowano. Ponów ręcznie.`);e.status=r.status;throw e}
